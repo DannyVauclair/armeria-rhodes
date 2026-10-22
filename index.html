@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2a1510">
+<title>Armeria di Rhodes · Listino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Rye&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#17110b;--panel:#2b2117;--panel2:#201811;--ink:#ead9b7;--muted:#b9a27c;--brick:#876744;--brick2:#5e472f;--brass:#c6a267;--brass2:#e0c188;--line:rgba(198,162,103,.38);--soft:rgba(234,217,183,.10);--danger:#b98563}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:radial-gradient(900px 480px at 8% -8%,rgba(184,145,92,.22),transparent 64%),radial-gradient(850px 520px at 100% 10%,rgba(137,103,66,.20),transparent 66%),linear-gradient(180deg,#2d2116,#1d150f 72%)}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background:repeating-linear-gradient(0deg,transparent 0 7px,rgba(255,255,255,.02) 7px 8px)}
+button,input,textarea{font:inherit}button{cursor:pointer}.shell{width:min(1440px,calc(100% - 28px));margin:auto;padding:18px 0 86px}
+.signboard{position:relative;min-height:144px;display:grid;place-items:center;text-align:center;padding:28px 30px;border:1px solid var(--line);border-top:3px double var(--brass);border-bottom:3px double var(--brass);background:linear-gradient(90deg,rgba(0,0,0,.16),transparent 28% 72%,rgba(0,0,0,.16)),linear-gradient(180deg,rgba(114,85,53,.56),rgba(54,40,27,.78));box-shadow:0 18px 46px rgba(0,0,0,.42),inset 0 0 70px rgba(0,0,0,.35)}
+.signboard .eyebrow{font-family:'Libre Baskerville',Georgia,serif;color:#c5aa7d;font-size:10px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase}.signboard h1{margin:5px 0 0;color:#ead4a3;font:400 clamp(38px,5vw,66px)/1 'Rye',serif;text-shadow:0 3px 12px #000}.signboard .subtitle{margin-top:11px;color:#cbb184;font:400 11px 'Special Elite',monospace;letter-spacing:1.1px;text-transform:uppercase}
+.toolbar{display:grid;grid-template-columns:minmax(240px,1fr) auto;gap:8px;margin:14px 0 10px}.searchbox{position:relative}.searchbox:before{content:"⌕";position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--brass);font-size:16px}.field,.searchbox input{width:100%;height:42px;border:1px solid var(--line);background:rgba(29,21,14,.92);color:var(--ink);padding:10px 12px;outline:none}.searchbox input{padding-left:38px}.field:focus,.searchbox input:focus{border-color:var(--brass)}
+.btn{min-height:42px;border:1px solid var(--line);background:linear-gradient(180deg,#342719,#21180f);color:var(--ink);padding:9px 14px;font-size:10px;font-weight:700;letter-spacing:.45px;text-transform:uppercase}.btn:hover{border-color:var(--brass);color:var(--brass2)}.btn.primary{border-color:var(--brass);background:linear-gradient(180deg,var(--brick),var(--brick2));color:#f4dfbb}.btn.danger{border-color:rgba(206,119,104,.52);color:#e29a8e}
+.mini-status{display:flex;justify-content:space-between;gap:10px;margin-bottom:12px;padding:8px 11px;border-left:3px solid var(--brass);background:rgba(219,196,154,.055);color:var(--muted);font-size:10px}.quickbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;border:1px solid var(--soft);background:rgba(0,0,0,.12)}.quick-label{color:var(--brass2);font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase}.quick-empty{color:#8e7a60;font-size:10px;font-style:italic}.quick-chip{display:inline-flex;align-items:center;gap:5px;border:1px solid rgba(201,152,76,.25);background:#21180f;padding:5px 6px 5px 9px;font-size:10px}.quick-chip button{width:22px;height:22px;border:1px solid var(--line);background:transparent;color:var(--brass2);padding:0}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 342px;gap:14px;align-items:start}.categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.category{border:1px solid var(--soft);border-top:2px solid var(--brick);background:linear-gradient(180deg,rgba(53,41,28,.98),rgba(31,24,17,.98));box-shadow:0 7px 20px rgba(0,0,0,.16);min-width:0}.category-head{min-height:46px;display:flex;align-items:center;gap:9px;padding:10px 12px;border-bottom:1px solid var(--soft);background:linear-gradient(90deg,rgba(151,112,66,.16),transparent 72%);cursor:pointer;user-select:none}.category-head:hover{background:linear-gradient(90deg,rgba(151,112,66,.25),transparent 78%)}.category-icon{color:var(--brass);width:18px;text-align:center}.category-title{flex:1;margin:0;color:#ead5af;font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;letter-spacing:.2px;text-transform:uppercase}.category-arrow{color:var(--brass);font-size:10px;transition:transform .18s}.category.collapsed .category-arrow{transform:rotate(-90deg)}.category.collapsed .category-body{display:none}
+.rows{padding:3px 0}.row{display:grid;grid-template-columns:minmax(0,1fr) 76px 112px 78px;gap:8px;align-items:center;min-height:49px;padding:6px 10px;border-bottom:1px dashed rgba(240,223,191,.09)}.row:last-child{border-bottom:0}.row:hover{background:rgba(219,196,154,.035)}.item-main{display:flex;align-items:center;gap:7px;min-width:0}.item-name{font-size:11.5px;font-weight:700;line-height:1.3}.item-tools{display:inline-flex;gap:4px}.icon-btn{width:25px;height:25px;display:grid;place-items:center;border:1px solid rgba(201,152,76,.3);background:rgba(0,0,0,.13);color:#9f8d71;padding:0;font-size:12px}.icon-btn:hover,.icon-btn.active{color:var(--brass2);border-color:var(--brass)}.price{color:#d9bf91;font-size:11px;text-align:right}.qty{display:grid;grid-template-columns:27px 1fr 27px;gap:4px}.qty button{border:1px solid var(--line);background:#21180f;color:var(--brass2);padding:0}.qty input{width:100%;height:29px;border:1px solid var(--soft);background:#17110b;color:var(--ink);text-align:center;outline:none;font-size:11px}.row-total{color:var(--brass2);font-size:11px;font-weight:700;text-align:right}.category-subtotal{display:flex;justify-content:flex-end;gap:8px;padding:8px 10px;border-top:1px solid var(--soft);color:var(--muted);font-size:9.5px;text-transform:uppercase}.category-subtotal strong{color:var(--brass2)}.no-results{grid-column:1/-1;padding:38px;text-align:center;color:var(--muted);border:1px dashed var(--line)}
+.checkout{position:sticky;top:12px;border:1px solid var(--line);border-top:3px double var(--brass);background:linear-gradient(180deg,#302418,#1b140e);box-shadow:0 12px 32px rgba(0,0,0,.3);overflow:hidden}.checkout-head{padding:14px 14px 11px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(151,112,66,.20),transparent)}.checkout-title{color:var(--brass2);font:400 19px 'Rye',serif}.checkout-sub{margin-top:4px;color:var(--muted);font-size:9.5px}.discount-label{display:block;margin:0 0 5px;color:var(--muted);font-size:8.5px;letter-spacing:.6px;text-transform:uppercase}.summary{padding:8px 12px;max-height:310px;overflow:auto}.summary-empty{padding:16px 2px;color:var(--muted);font-size:10.5px}.summary-row{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding:6px 0;border-bottom:1px dashed var(--soft)}.summary-name{font-size:10.5px;font-weight:700}.summary-meta{margin-top:2px;color:var(--muted);font-size:8.5px}.summary-qty{color:var(--muted);font-size:9.5px;white-space:nowrap}
+.discount-box{padding:10px 12px;border-top:1px solid var(--soft)}.discount-buttons{display:flex;flex-wrap:wrap;gap:5px}.discount-buttons button{min-width:43px;height:30px;border:1px solid var(--line);background:#1b140e;color:var(--ink);font-size:9.5px}.discount-buttons button.active{border-color:var(--brass);background:linear-gradient(180deg,var(--brick),var(--brick2));color:#f4dfbb}.custom-discount{display:flex;align-items:center;gap:6px;margin-top:7px;color:var(--muted);font-size:10px}.custom-discount input{width:72px;height:30px;border:1px solid var(--line);background:#17110b;color:var(--ink);text-align:center;outline:none}
+.breakdown{padding:9px 12px;border-top:1px solid var(--line)}.sum-line{display:flex;justify-content:space-between;gap:10px;padding:4px 0;font-size:10.5px}.sum-line.discount{color:#c59a67}.sum-line.total{margin-top:5px;padding-top:9px;border-top:1px solid var(--line);color:var(--brass2);font-size:15px;font-weight:700}.checkout-actions{display:grid;grid-template-columns:1fr;gap:6px;padding:10px 12px 13px;border-top:1px solid var(--soft)}
+.footer{position:fixed;left:0;right:0;bottom:0;z-index:20;border-top:2px solid var(--brass);background:rgba(37,28,19,.97);backdrop-filter:blur(8px);box-shadow:0 -10px 30px rgba(0,0,0,.3)}.footer-inner{width:min(1440px,calc(100% - 28px));height:58px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:14px}.footer-note{color:#a28d6d;font:600 10px Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.5px}.grand{display:flex;gap:10px;align-items:baseline}.grand span{color:var(--muted);font-size:9px;text-transform:uppercase}.grand strong{color:var(--brass2);font-size:21px}
+.modal{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(5,3,3,.83);backdrop-filter:blur(4px)}.modal.open{display:flex}.modal-card{width:min(620px,100%);max-height:92vh;overflow:auto;border:1px solid var(--line);border-top:3px double var(--brass);background:linear-gradient(180deg,#302419,#1b140e);box-shadow:0 22px 60px #000;padding:16px}.modal-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:10px}.modal-kicker{color:var(--muted);font-size:8.5px;text-transform:uppercase;letter-spacing:.7px}.modal-title{margin:3px 0 0;color:var(--brass2);font:700 21px Arial,Helvetica,sans-serif}.close-btn{width:34px;height:34px;border:1px solid var(--line);background:#1b140e;color:var(--ink);font-size:18px}.recipe-summary{margin:12px 0;padding:9px 10px;border-left:3px solid var(--brick);background:rgba(219,196,154,.05);color:#d6c19d;font-size:10px;line-height:1.5}.craft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:min(390px,100%);margin:14px auto}.slot{aspect-ratio:1/1;display:grid;place-items:center;text-align:center;padding:7px;border:1px solid #8f7249;background:linear-gradient(rgba(225,196,145,.92),rgba(196,159,102,.92));color:#332016;font-size:9px;font-weight:700;line-height:1.35;box-shadow:inset 0 0 0 3px rgba(76,44,26,.09)}.slot.empty{opacity:.34}.modal-note{color:#917d61;font-size:9px;text-align:center}
+@media(max-width:1060px){.layout{grid-template-columns:1fr}.checkout{position:relative;top:auto}.categories{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.shell{width:calc(100% - 18px)}.signboard{padding:28px 18px 62px}.toolbar{grid-template-columns:1fr 1fr}.searchbox{grid-column:1/-1}.categories{grid-template-columns:1fr}.row{grid-template-columns:minmax(0,1fr) 68px 102px 68px}}@media(max-width:500px){.signboard h1{font-size:37px}.row{grid-template-columns:minmax(0,1fr) 58px 88px}.row-total{display:none}.toolbar{grid-template-columns:1fr}.searchbox{grid-column:auto}.footer-note{display:none}}
+
+/* Typography leggibile: il font western resta solo nel banner */
+.toolbar,.mini-status,.quickbar,.category,.checkout,.footer,.modal-card{
+  font-family:Arial,Helvetica,sans-serif;
+}
+.btn,.field,.searchbox input,.item-name,.price,.qty input,.row-total,
+.category-subtotal,.checkout-sub,.checkout-fields label,.discount-label,
+.summary-name,.summary-meta,.summary-qty,.discount-buttons button,
+.custom-discount,.sum-line,.grand,.recipe-summary,.slot,.modal-kicker{
+  font-family:Arial,Helvetica,sans-serif;
+}
+.item-name{font-size:12px;font-weight:600}
+.price,.row-total,.summary-qty,.sum-line strong,.grand strong{
+  font-variant-numeric:tabular-nums;
+}
+.price,.row-total{font-size:12px}
+.qty input{font-size:12px}
+.category-subtotal{font-size:10px}
+.checkout-title{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:0}
+.modal-title{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:0}
+
+
+.production-card{width:min(980px,100%);padding:0;overflow:hidden}
+.production-card .modal-head{padding:16px 18px}
+.production-subtitle{margin-top:5px;color:var(--muted);font-size:11px;line-height:1.4}
+.production-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(240px,.65fr);gap:0}
+.production-main{padding:16px 18px 20px;border-right:1px solid var(--line)}
+.production-nav{display:grid;grid-template-columns:140px 1fr 140px;align-items:center;gap:10px;margin-bottom:14px}
+.production-nav .btn{width:140px;min-width:140px;height:36px;min-height:36px;padding:7px 10px;display:flex;align-items:center;justify-content:center}
+.production-nav .btn:last-child{justify-self:end}
+.production-nav .btn:disabled{opacity:.35;cursor:not-allowed}
+.production-step{justify-self:center;color:var(--muted);font-size:10px;font-weight:700;white-space:nowrap}
+.prod-title{margin:0;color:var(--brass2);font:700 20px Arial,Helvetica,sans-serif}
+.prod-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:5px 0 12px;color:var(--muted);font-size:10.5px}
+.prod-meta strong{color:var(--ink);font-size:11px}
+.prod-badge{display:inline-block;padding:4px 7px;border:1px solid var(--line);background:rgba(198,162,103,.08);color:var(--brass2);font-size:9.5px;font-weight:700}
+.production-summary{margin:0 0 12px;padding:9px 10px;border-left:3px solid var(--brass);background:rgba(0,0,0,.12)}
+.production-summary-label{display:block;margin-bottom:4px;color:var(--muted);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.45px}
+.production-summary-text{color:var(--ink);font-size:11px;line-height:1.5}
+.production-grid-label{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin:0 0 7px;color:var(--muted);font-size:9.5px}
+.production-grid-label strong{color:var(--ink);font-size:10px;text-transform:uppercase}
+.production-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.production-slot{position:relative;min-height:104px;display:flex;align-items:center;justify-content:center;text-align:center;padding:19px 9px 10px;border:1px solid rgba(198,162,103,.32);background:linear-gradient(180deg,rgba(198,162,103,.08),rgba(0,0,0,.15));color:var(--ink)}
+.production-slot.empty{border-color:var(--soft);background:rgba(0,0,0,.10);color:rgba(234,217,183,.25)}
+.production-slot-number{position:absolute;top:6px;left:7px;color:rgba(198,162,103,.72);font-size:9px;font-weight:700}
+.production-slot-text{font-size:11px;font-weight:700;line-height:1.35;overflow-wrap:anywhere}
+.materials-panel{padding:16px;background:rgba(0,0,0,.10)}
+.materials-title{margin:0 0 9px;color:var(--brass2);font:700 13px Arial,Helvetica,sans-serif;text-transform:uppercase}
+.materials-note{margin:0 0 10px;color:var(--muted);font-size:9.5px;line-height:1.45}
+.materials-list{display:grid;grid-template-columns:1fr auto;gap:0}
+.materials-list span{padding:7px 2px;border-bottom:1px dashed var(--soft);font-size:10.5px}
+.materials-list .mat-qty{color:var(--brass2);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.production-empty{padding:34px 18px;text-align:center;color:var(--muted);font-size:11px}
+@media(max-width:760px){
+  .production-layout{grid-template-columns:1fr}
+  .production-nav{grid-template-columns:118px 1fr 118px;gap:6px}
+  .production-nav .btn{width:118px;min-width:118px;font-size:9px}
+  .production-main{border-right:0;border-bottom:1px solid var(--line)}
+  .production-slot{min-height:88px;padding:18px 6px 8px}
+  .production-slot-text{font-size:10px}
+}
+
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="signboard"><div><div class="eyebrow">Rhodes · Lemoyne</div><h1>Armeria di Rhodes</h1><div class="subtitle">Armi · Munizioni · Componenti</div></div></header>
+<section class="toolbar"><div class="searchbox"><input id="search" type="search" placeholder="Cerca un articolo..." autocomplete="off"></div><button class="btn" id="collapseBtn">Chiudi sezioni</button></section>
+<div class="mini-status"><span id="miniStatus">Armeria · 59 voci</span><span>Prezzi al pubblico</span></div>
+<div class="quickbar" id="quickbar"></div>
+<main class="layout"><section class="categories" id="categories"></section>
+<aside class="checkout">
+<div class="checkout-head"><div class="checkout-title">Conto al banco</div><div class="checkout-sub">Riepilogo del preventivo corrente</div></div>
+<div class="summary" id="summary"></div>
+<div class="discount-box"><div class="discount-label">Sconto sull'ordine</div><div class="discount-buttons" id="discountButtons"><button data-discount="0" class="active">0%</button><button data-discount="5">5%</button><button data-discount="10">10%</button><button data-discount="15">15%</button><button data-discount="20">20%</button></div><div class="custom-discount"><span>Personalizzato</span><input id="customDiscount" type="number" min="0" max="100" step=".5" placeholder="%"><span>%</span></div></div>
+<div class="breakdown"><div class="sum-line"><span>Subtotale</span><strong id="subtotal">$0.00</strong></div><div class="sum-line discount"><span id="discountLabel">Sconto 0%</span><strong id="discountValue">-$0.00</strong></div><div class="sum-line total"><span>Totale</span><strong id="total">$0.00</strong></div></div>
+<div class="checkout-actions"><button class="btn primary" id="prepareOrderBtn">Prepara ordine</button><button class="btn danger" id="clearCheckoutBtn">Svuota ordine</button></div>
+</aside></main></div>
+<footer class="footer"><div class="footer-inner"><div class="footer-note">Armeria di Rhodes · Listino interattivo</div><div class="grand"><span>Totale ordine</span><strong id="grandTotal">$0.00</strong></div></div></footer>
+<div class="modal" id="recipeModal"><div class="modal-card"><div class="modal-head"><div><div class="modal-kicker" id="recipeCategory">Ricetta</div><h2 class="modal-title" id="recipeTitle">Crafting</h2></div><button class="close-btn" id="recipeClose">×</button></div><div class="recipe-summary" id="recipeSummary"></div><div class="craft-grid" id="craftGrid"></div><div class="modal-note">Schema 3×3 della finestra di crafting.</div></div></div>
+
+<div class="modal production-modal" id="productionModal" role="dialog" aria-modal="true" aria-labelledby="productionTitle">
+  <div class="modal-card production-card">
+    <div class="modal-head">
+      <div>
+        <div class="modal-kicker">Banco di lavoro</div>
+        <h2 class="modal-title" id="productionTitle">Preparazione ordine</h2>
+        <div class="production-subtitle" id="productionSubtitle"></div>
+      </div>
+      <button class="close-btn" id="productionClose" type="button" aria-label="Chiudi">×</button>
+    </div>
+    <div id="productionBody"></div>
+  </div>
+</div>
+
+<script>
+const catalog={"label":"Armeria","itemCount":59,"categories":[{"name":"Accessori Revolver","icon":"◈","items":[{"n":"Calcio","p":4.0},{"n":"Tacca di mira","p":4.0},{"n":"Canna","p":4.0},{"n":"Telaio","p":4.0},{"n":"Cane","p":4.0},{"n":"Tamburo","p":4.0},{"n":"Grilletto","p":4.0}]},{"name":"Accessori Pistola","icon":"◈","items":[{"n":"Tacca di mira","p":4.0},{"n":"Impugnatura","p":4.0},{"n":"Canna","p":4.0},{"n":"Telaio","p":4.0},{"n":"Percussore","p":4.0},{"n":"Otturatore","p":4.0},{"n":"Grilletto","p":4.0}]},{"name":"Accessori Repeater","icon":"◈","items":[{"n":"Tacca di mira","p":5.0},{"n":"Canna","p":5.0},{"n":"Telaio","p":5.0},{"n":"Percussore","p":5.0},{"n":"Calcio","p":5.0},{"n":"Otturatore","p":5.0},{"n":"Grilletto","p":5.0},{"n":"Ottica per Fucile 2x","p":50.0}]},{"name":"Accessori Arco e Coltello","icon":"✦","items":[{"n":"Impugnatura Coltello","p":4.0},{"n":"Lama Coltello","p":4.0},{"n":"Impugnatura Arco","p":4.0},{"n":"Corpo Arco","p":4.0},{"n":"Corda Arco","p":4.0}]},{"name":"Armi","icon":"⚜","open":true,"items":[{"n":"Revolver Cattleman","p":80.0},{"n":"Revolver Double Action","p":90.0},{"n":"Colt M1892","p":95.0},{"n":"Colt M1873","p":120.0},{"n":"Revolver Schofield","p":140.0},{"n":"Pistola Semiautomatica","p":125.0},{"n":"Pistola M1899","p":145.0},{"n":"Fucile Varmint","p":100.0},{"n":"Repeater Carabina","p":140.0},{"n":"Repeater Henry","p":240.0},{"n":"Repeater Evans","p":245.0},{"n":"Arco","p":22.0},{"n":"Coltello","p":18.0},{"n":"Lazo","p":12.0},{"n":"Lazo Rinforzato","p":22.0}]},{"name":"Munizioni","icon":"◆","open":true,"items":[{"n":"Freccia Standard","p":0.12},{"n":"Munizioni Revolver","p":0.15},{"n":"Munizioni Revolver Alta Velocità","p":0.2},{"n":"Munizioni Revolver Express","p":0.27},{"n":"Munizioni Pistola Standard","p":0.15},{"n":"Munizioni Pistola Alta Velocità","p":0.2},{"n":"Munizioni Pistola Express","p":0.27},{"n":"Munizioni Repeater","p":0.2},{"n":"Munizioni Repeater Alta Velocità","p":0.25},{"n":"Munizioni Fucili","p":0.2},{"n":"Munizioni Fucili Alta Velocità","p":0.27},{"n":"Munizioni .22","p":0.15}]},{"name":"Altro","icon":"✧","items":[{"n":"Grasso per Armi","p":16.0},{"n":"Lanterna Piccola","p":30.0},{"n":"Polvere da sparo","p":0.1},{"n":"Porta Armi Lunghe","p":10.0},{"n":"Porta Armi Corte","p":8.0}]}]};
+const recipeData={"ACCESSORI REVOLVER||CALCIO":{"summary":"30 x legno; 1 x asse di legno","slots":["15 x Legno","1 x Asse di Legno","15 x Legno","","","","","",""]},"ACCESSORI REVOLVER||TACCA DI MIRA":{"summary":"30 x ferro; 30 x acciaio","slots":["","","","","","","15 x Ferro","30 x Acciaio","15 x Ferro"]},"ACCESSORI REVOLVER||CANNA":{"summary":"30 x acciaio; 30 x ferro","slots":["15 x Acciaio","30 x Ferro","15 x Acciaio","","","","","",""]},"ACCESSORI REVOLVER||TELAIO":{"summary":"30 x ferro","slots":["","","","10 x Ferro","10 x Ferro","10 x Ferro","","",""]},"ACCESSORI REVOLVER||CANE":{"summary":"30 x acciaio","slots":["","","","10 x Acciaio","10 x Acciaio","10 x Acciaio","","",""]},"ACCESSORI REVOLVER||TAMBURO":{"summary":"20 x ferro; 30 x acciaio","slots":["","20 x Ferro","","10 x Acciaio","10 x Acciaio","10 x Acciaio","","",""]},"ACCESSORI REVOLVER||GRILLETTO":{"summary":"20 x acciaio; 30 x ferro","slots":["","20 x Acciaio","","10 x Ferro","10 x Ferro","10 x Ferro","","",""]},"ACCESSORI PISTOLA||TACCA DI MIRA":{"summary":"20 x ferro; 20 x acciaio","slots":["10 x Ferro","","","","","","10 x Acciaio","10 x Ferro","10 x Acciaio"]},"ACCESSORI PISTOLA||IMPUGNATURA":{"summary":"20 x legno; 20 x legno pregiato","slots":["","10 x Legno","","10 x Legno Pregiato","10 x Legno","10 x Legno Pregiato","","",""]},"ACCESSORI PISTOLA||CANNA":{"summary":"20 x acciaio; 30 x ferro","slots":["20 x Acciaio","","","","","","10 x Ferro","10 x Ferro","10 x Ferro"]},"ACCESSORI PISTOLA||TELAIO":{"summary":"45 x ferro; 15 x acciaio","slots":["15 x Ferro","","15 x Acciaio","15 x Ferro","","15 x Ferro","","",""]},"ACCESSORI PISTOLA||PERCUSSORE":{"summary":"45 x ferro; 15 x acciaio","slots":["","","","15 x Ferro","","15 x Ferro","15 x Ferro","","15 x Acciaio"]},"ACCESSORI PISTOLA||OTTURATORE":{"summary":"30 x ferro; 20 x acciaio","slots":["","15 x Ferro","","","20 x Acciaio","","","",""]},"ACCESSORI PISTOLA||GRILLETTO":{"summary":"30 x ferro; 30 x acciaio","slots":["","15 x Ferro","","15 x Acciaio","","15 x Acciaio","","",""]},"ACCESSORI REPEATER||TACCA DI MIRA":{"summary":"20 x ferro; 20 x acciaio","slots":["5 x Ferro","5 x Ferro","","5 x Acciaio","5 x Acciaio","","10 x Acciaio","10 x Ferro",""]},"ACCESSORI REPEATER||CANNA":{"summary":"20 x ferro; 20 x acciaio","slots":["5 x Ferro","5 x Ferro","","10 x Acciaio","10 x Ferro","","5 x Acciaio","5 x Acciaio",""]},"ACCESSORI REPEATER||TELAIO":{"summary":"25 x ferro; 20 x acciaio","slots":["10 x Ferro","10 x Acciaio","","5 x Ferro","10 x Ferro","","5 x Acciaio","5 x Acciaio",""]},"ACCESSORI REPEATER||PERCUSSORE":{"summary":"30 x ferro; 20 x acciaio","slots":["","","15 x Ferro","","","20 x Acciaio","","","15 x Ferro"]},"ACCESSORI REPEATER||CALCIO":{"summary":"60 x legno","slots":["","15 x Legno","","15 x Legno","","15 x Legno","","",""]},"ACCESSORI REPEATER||OTTURATORE":{"summary":"20 x ferro; 30 x acciaio","slots":["","","15 x Acciaio","","","20 x Ferro","","","15 x Acciaio"]},"ACCESSORI REPEATER||GRILLETTO":{"summary":"30 x ferro; 20 x acciaio","slots":["15 x Acciaio","","","10 x Ferro","","10 x Ferro","","","15 x Acciaio"]},"ACCESSORI REPEATER||OTTICA PER FUCILE 2X":{"summary":"10 x Lingotto di Ferro; 5 x Acciaio Temperato","slots":["5 x Lingotto di Ferro","5 x Lingotto di Ferro","","","","","","","5 x Acciaio Temperato"],"yield":5},"ACCESSORI ARCO E COLTELLO||IMPUGNATURA COLTELLO":{"summary":"30 x legno; 40 x fibra; 10 x ferro; 10 x acciaio","slots":["10 x Legno","10 x Legno","10 x Legno","20 x Fibra","20 x Fibra","","","10 x Ferro","10 x Acciaio"]},"ACCESSORI ARCO E COLTELLO||LAMA COLTELLO":{"summary":"1 x lingotto di ferro; 1 x acciaio temperato; 1 x lingotto di rame","slots":["1 x Lingotto di Ferro","1 x Lingotto di Rame","1 x Acciaio Temperato","","","","","",""]},"ACCESSORI ARCO E COLTELLO||IMPUGNATURA ARCO":{"summary":"30 x legno; 40 x fibra; 20 x legno pregiato","slots":["10 x Legno","10 x Legno","10 x Legno","20 x Fibra","20 x Fibra","","","10 x Legno Pregiato","10 x Legno Pregiato"]},"ACCESSORI ARCO E COLTELLO||CORPO ARCO":{"summary":"30 x legno pregiato; 20 x fibra","slots":["10 x Legno Pregiato","10 x Legno Pregiato","10 x Legno Pregiato","20 x Fibra","","","","",""]},"ACCESSORI ARCO E COLTELLO||CORDA ARCO":{"summary":"60 x fibra","slots":["20 x Fibra","20 x Fibra","20 x Fibra","","","","","",""]},"ARMI||REVOLVER CATTLEMAN":{"summary":"2 x Componente Revolver; 3 x Asse di Legno; 2 x Acciaio Temperato","slots":["1 x Componente Revolver","1 x Asse di Legno","1 x Componente Revolver","","1 x Asse di Legno","","1 x Asse di Legno","1 x Acciaio Temperato","1 x Acciaio Temperato"]},"ARMI||REVOLVER DOUBLE ACTION":{"summary":"2 x Componente Revolver; 2 x Asse di Legno; 4 x Lingotto di Ferro; 4 x Acciaio Temperato","slots":["1 x Componente Revolver","1 x Asse di Legno","1 x Componente Revolver","","1 x Asse di Legno","","4 x Lingotto di Ferro","2 x Acciaio Temperato","2 x Acciaio Temperato"]},"ARMI||COLT M1892":{"summary":"2 x componente revolver; 2 x asse di legno; 4 x lingotto di rame; 3 x acciaio temperato","slots":["1 x Componente Revolver","1 x Asse di Legno","1 x Componente Revolver","","1 x Asse di Legno","","3 x Acciaio Temperato","2 x Lingotto di Rame","2 x Lingotto di Rame"]},"ARMI||COLT M1873":{"summary":"3 x componente revolver; 2 x asse di legno; 3 x acciaio temperato; 4 x lingotto di ferro","slots":["1 x Componente Revolver","1 x Asse di Legno","2 x Componente Revolver","","1 x Asse di Legno","","3 x Acciaio Temperato","2 x Lingotto di Ferro","2 x Lingotto di Ferro"]},"ARMI||REVOLVER SCHOFIELD":{"summary":"4 x Componente Revolver; 2 x Asse di Legno; 2 x Lingotto di Ferro; 2 x Acciaio Temperato","slots":["2 x Componente Revolver","1 x Asse di Legno","2 x Componente Revolver","","1 x Asse di Legno","","2 x Lingotto di Ferro","1 x Acciaio Temperato","1 x Acciaio Temperato"]},"ARMI||PISTOLA SEMIAUTOMATICA":{"summary":"3 x componente pistola; 2 x asse di legno; 3 x lingotto di ferro; 3 x acciaio temperato","slots":["2 x Componente Pistola","1 x Asse di Legno","1 x Componente Pistola","","1 x Asse di Legno","","3 x Lingotto di Ferro","1 x Acciaio Temperato","2 x Acciaio Temperato"]},"ARMI||PISTOLA M1899":{"summary":"4 x Componente Pistola; 2 x Asse di Legno; 3 x Acciaio Temperato; 3 x Lingotto di Ferro","slots":["2 x Componente Pistola","1 x Asse di Legno","2 x Componente Pistola","","1 x Asse di Legno","","3 x Acciaio Temperato","1 x Lingotto di Ferro","2 x Lingotto di Ferro"]},"ARMI||FUCILE VARMINT":{"summary":"2 x Componente Fucile Canna Rigata; 3 x Acciaio Temperato; 3 x Lingotto di Ferro; 3 x Asse di Legno","slots":["1 x Componente Fucile Canna Rigata","2 x Acciaio Temperato","1 x Componente Fucile Canna Rigata","","1 x Acciaio Temperato","","3 x Lingotto di Ferro","1 x Asse di Legno","2 x Asse di Legno"]},"ARMI||REPEATER CARABINA":{"summary":"2 x Componente Fucile Canna Rigata; 2 x Lingotto di Ferro; 2 x Acciaio Temperato; 4 x Asse di Legno","slots":["1 x Componente Fucile Canna Rigata","1 x Lingotto di Ferro","1 x Componente Fucile Canna Rigata","","1 x Lingotto di Ferro","","2 x Acciaio Temperato","2 x Asse di Legno","2 x Asse di Legno"]},"ARMI||REPEATER HENRY":{"summary":"5 x Componente Fucile Canna Rigata; 4 x Lingotto di Rame; 3 x Acciaio Temperato; 3 x Asse di Legno","slots":["2 x Componente Fucile Canna Rigata","4 x Lingotto di Rame","3 x Componente Fucile Canna Rigata","","1 x Acciaio Temperato","","2 x Acciaio Temperato","2 x Asse di Legno","1 x Asse di Legno"]},"ARMI||REPEATER EVANS":{"summary":"5 x Componente Fucile Canna Rigata; 5 x Lingotto di Rame; 4 x Lingotto di Ferro; 2 x Asse di Legno","slots":["2 x Componente Fucile Canna Rigata","5 x Lingotto di Rame","3 x Componente Fucile Canna Rigata","","2 x Lingotto di Ferro","","2 x Lingotto di Ferro","1 x Asse di Legno","1 x Asse di Legno"]},"ARMI||ARCO":{"summary":"1 x Componente Arco; 2 x Assi di Legno; 15 x Fibra","slots":["1 x Componente Arco","1 x Asse di Legno","1 x Asse di Legno","","","","5 x Fibra","5 x Fibra","5 x Fibra"]},"ARMI||COLTELLO":{"summary":"1 x Componente Arma Mischia; 1 x Acciaio Temperato; 3 x Lingotto di Ferro","slots":["1 x Componente Arma da Taglio","1 x Acciaio Temperato","1 x Lingotto di Ferro","","2 x Lingotto di Ferro","","","",""]},"ARMI||LAZO":{"summary":"1 x Componente Corda; 1 x Legno Pregiato; 15 x Fibra","slots":["1 x Componente Corda","1 x Asse di Legno Pregiato","","","","","5 x Fibra","5 x Fibra","5 x Fibra"]},"ARMI||LAZO RINFORZATO":{"summary":"1 x componente corda; 3 x asse di legno pregiato; 16 x fibra","slots":["1 x Componente Corda","1 x Asse di Legno Pregiato","1 x Fibra","1 x Asse di Legno Pregiato","","5 x Fibra","5 x Fibra","1 x Asse di Legno Pregiato","5 x Fibra"]},"MUNIZIONI||FRECCIA STANDARD":{"summary":"30 x Legno; 30 x Ferro","slots":["15 x Legno","15 x Legno","","","","","10 x Ferro","10 x Ferro","10 x Ferro"]},"MUNIZIONI||MUNIZIONI REVOLVER":{"summary":"10 x Piombo; 8 x Polvere da Sparo","slots":["5 x Piombo","4 x Polvere da Sparo","","","","","","5 x Piombo","4 x Polvere da Sparo"]},"MUNIZIONI||MUNIZIONI REVOLVER ALTA VELOCITÀ":{"summary":"6 x polvere da sparo; 12 x piombo","slots":["3 x Polvere da Sparo","6 x Piombo","","","","","","6 x Piombo","3 x Polvere da Sparo"]},"MUNIZIONI||MUNIZIONI REVOLVER EXPRESS":{"summary":"14 x Polvere da Sparo; 30 x Piombo Grezzo","slots":["7 x Polvere da Sparo","7 x Polvere da Sparo","","","","","","15 x Piombo Grezzo","15 x Piombo Grezzo"],"yield":50},"MUNIZIONI||MUNIZIONI PISTOLA STANDARD":{"summary":"10 x piombo; 10 x polvere da sparo","slots":["5 x Piombo","5 x Piombo","","5 x Polvere da Sparo","5 x Polvere da Sparo","","","",""]},"MUNIZIONI||MUNIZIONI PISTOLA ALTA VELOCITÀ":{"summary":"10 x piombo; 5 x polvere da sparo","slots":["5 x Piombo","","5 x Piombo","","","","","","5 x Polvere da Sparo"]},"MUNIZIONI||MUNIZIONI PISTOLA EXPRESS":{"summary":"30 x Piombo Grezzo; 14 x Polvere da Sparo","slots":["15 x Piombo Grezzo","15 x Piombo Grezzo","","","","","","","14 x Polvere da Sparo"],"yield":50},"MUNIZIONI||MUNIZIONI REPEATER":{"summary":"6 x piombo; 5 x polvere da sparo","slots":["2 x Piombo","5 x Polvere da Sparo","2 x Piombo","2 x Piombo","","","","",""]},"MUNIZIONI||MUNIZIONI REPEATER ALTA VELOCITÀ":{"summary":"10 x Polvere da Sparo; 14 x Piombo Grezzo","slots":["","5 x Polvere da Sparo","","5 x Polvere da Sparo","","7 x Piombo Grezzo","","7 x Piombo Grezzo",""],"yield":40},"MUNIZIONI||MUNIZIONI FUCILI":{"summary":"10 x piombo; 5 x polvere da sparo","slots":["","","","","","","5 x Polvere da Sparo","10 x Ferro",""]},"MUNIZIONI||MUNIZIONI FUCILI ALTA VELOCITÀ":{"summary":"14 x Ferro Grezzo; 7 x Polvere da Sparo","slots":["7 x Ferro Grezzo","","","","","","7 x Polvere da Sparo","","7 x Ferro Grezzo"],"yield":40},"MUNIZIONI||MUNIZIONI .22":{"summary":"8 x Piombo; 10 x Polvere da Sparo","slots":["4 x Piombo","4 x Piombo","","","","","5 x Polvere da Sparo","5 x Polvere da Sparo",""]},"PERSONALIZZAZIONI||VARIANTE PER ARMI DA FUOCO":{"summary":"20 x Acciaio Grezzo; 10 x Ferro Grezzo; 10 x Ottone Grezzo","slots":["20 x Acciaio Grezzo","10 x Ferro Grezzo","10 x Ottone Grezzo","","","","","",""],"yield":5},"ALTRO||LANTERNA PICCOLA":{"summary":"1 x componente lanterna; 3 x lingotto di ferro; 3 x lingotto di rame; 10 x carbone","slots":["1 x Componente Lanterna","1 x Lingotto di Ferro","10 x Carbone","","2 x Lingotto di Ferro","","1 x Lingotto di Rame","1 x Lingotto di Rame","1 x Lingotto di Rame"]},"ALTRO||POLVERE DA SPARO":{"summary":"10 x Zolfo; 9 x Carbone","slots":["5 x Zolfo","5 x Zolfo","","","","","3 x Carbone","3 x Carbone","3 x Carbone"]},"ALTRO||PORTA ARMI LUNGHE":{"summary":"20 x legno; 20 x ferro; 40 x fibra","slots":["10 x Legno","10 x Legno","10 x Ferro","10 x Ferro","","10 x Fibra","10 x Fibra","10 x Fibra","10 x Fibra"]},"ALTRO||PORTA ARMI CORTE":{"summary":"24 x legno; 15 x ferro; 20 x fibra","slots":["12 x Legno","12 x Legno","5 x Ferro","5 x Ferro","5 x Ferro","","","10 x Fibra","10 x Fibra"]}};
+const RAW_COSTS={"ACCESSORI REVOLVER||CALCIO":0.6125,"ACCESSORI REVOLVER||TACCA DI MIRA":0.6,"ACCESSORI REVOLVER||CANNA":0.6,"ACCESSORI REVOLVER||TELAIO":0.6,"ACCESSORI REVOLVER||CANE":0,"ACCESSORI REVOLVER||TAMBURO":0.4,"ACCESSORI REVOLVER||GRILLETTO":0.6,"ACCESSORI PISTOLA||TACCA DI MIRA":0.4,"ACCESSORI PISTOLA||IMPUGNATURA":0.32,"ACCESSORI PISTOLA||CANNA":0.6,"ACCESSORI PISTOLA||TELAIO":0.9,"ACCESSORI PISTOLA||PERCUSSORE":0.9,"ACCESSORI PISTOLA||OTTURATORE":0.6,"ACCESSORI PISTOLA||GRILLETTO":0.6,"ACCESSORI REPEATER||TACCA DI MIRA":0.4,"ACCESSORI REPEATER||CANNA":0.4,"ACCESSORI REPEATER||TELAIO":0.5,"ACCESSORI REPEATER||PERCUSSORE":0.6,"ACCESSORI REPEATER||CALCIO":0.96,"ACCESSORI REPEATER||OTTURATORE":0.4,"ACCESSORI REPEATER||GRILLETTO":0.6,"ACCESSORI REPEATER||OTTICA PER FUCILE 2X":7.5,"ACCESSORI ARCO E COLTELLO||IMPUGNATURA COLTELLO":1.16,"ACCESSORI ARCO E COLTELLO||LAMA COLTELLO":1.46,"ACCESSORI ARCO E COLTELLO||IMPUGNATURA ARCO":0.96,"ACCESSORI ARCO E COLTELLO||CORPO ARCO":0.24,"ACCESSORI ARCO E COLTELLO||CORDA ARCO":0.72,"ARMI||REVOLVER CATTLEMAN":52.5,"ARMI||REVOLVER DOUBLE ACTION":65,"ARMI||COLT M1892":61.7,"ARMI||COLT M1873":82.5,"ARMI||REVOLVER SCHOFIELD":95,"ARMI||PISTOLA SEMIAUTOMATICA":80,"ARMI||PISTOLA M1899":100,"ARMI||FUCILE VARMINT":82.5,"ARMI||REPEATER CARABINA":80,"ARMI||REPEATER HENRY":174.2,"ARMI||REPEATER EVANS":176.5,"ARMI||ARCO":15.9,"ARMI||COLTELLO":12,"ARMI||LAZO":3.9,"ARMI||LAZO RINFORZATO":11.46,"MUNIZIONI||FRECCIA STANDARD":0.054,"MUNIZIONI||MUNIZIONI REVOLVER":0.0184,"MUNIZIONI||MUNIZIONI REVOLVER ALTA VELOCITA":0.024,"MUNIZIONI||MUNIZIONI REVOLVER EXPRESS":0.0472,"MUNIZIONI||MUNIZIONI PISTOLA STANDARD":0.02,"MUNIZIONI||MUNIZIONI PISTOLA ALTA VELOCITA":0.02,"MUNIZIONI||MUNIZIONI PISTOLA EXPRESS":0.0472,"MUNIZIONI||MUNIZIONI REPEATER":0.0112,"MUNIZIONI||MUNIZIONI REPEATER ALTA VELOCITA":0.031,"MUNIZIONI||MUNIZIONI FUCILI":0.016,"MUNIZIONI||MUNIZIONI FUCILI ALTA VELOCITA":0.042,"MUNIZIONI||MUNIZIONI .22":0.0176,"PERSONALIZZAZIONI||VARIANTE PER ARMI DA FUOCO":2.2,"ALTRO||GRASSO PER ARMI":5,"ALTRO||LANTERNA PICCOLA":19.4,"ALTRO||POLVERE DA SPARO":0.036,"ALTRO||PORTA ARMI LUNGHE":6,"ALTRO||PORTA ARMI CORTE":4.62};
+const STORE={qty:'rhodes_armory_qty',favorites:'rhodes_armory_favorites',discount:'rhodes_armory_discount'};
+let quantities={},favorites=new Set(),discount=0,allCollapsed=false;
+const $=s=>document.querySelector(s);
+function safeGet(k,d){try{let v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}}
+function safeSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function money(v){return '$'+Number(v||0).toFixed(2)}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function norm(v){return String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().replace(/\s+/g,' ').toUpperCase()}
+function key(ci,ii){return ci+':'+ii} function recipeKey(c,n){return c.toUpperCase()+'||'+n.toUpperCase()}
+function unitCost(c,n){let k=norm(c)+'||'+norm(n);return Object.prototype.hasOwnProperty.call(RAW_COSTS,k)?Number(RAW_COSTS[k]):null}
+function active(){let o=[];catalog.categories.forEach((c,ci)=>c.items.forEach((i,ii)=>{let q=Math.max(0,Math.floor(Number(quantities[key(ci,ii)])||0));if(q)o.push({key:key(ci,ii),category:c.name,name:i.n,qty:q,unit:i.p,value:q*i.p})}));return o}
+function save(){safeSet(STORE.qty,quantities);safeSet(STORE.discount,discount)}
+function change(k,d){quantities[k]=Math.max(0,(Number(quantities[k])||0)+d);save();render()}
+function toggleFav(k){favorites.has(k)?favorites.delete(k):favorites.add(k);safeSet(STORE.favorites,[...favorites]);render()}
+function quick(){let bar=$('#quickbar'),v=[];favorites.forEach(k=>{let [ci,ii]=k.split(':').map(Number),i=catalog.categories[ci]?.items[ii];if(i)v.push({k,i})});bar.innerHTML='<span class="quick-label">Preferiti</span>'+(v.length?v.map(x=>`<span class="quick-chip">${esc(x.i.n)}<button data-quick="${x.k}">+</button></span>`).join(''):'<span class="quick-empty">Premi ☆ accanto a un articolo per aggiungerlo qui.</span>');bar.querySelectorAll('[data-quick]').forEach(b=>b.onclick=()=>change(b.dataset.quick,1))}
+function render(){let box=$('#categories'),term=$('#search').value.trim().toLowerCase(),html='',countRows=0;
+catalog.categories.forEach((c,ci)=>{let rows=[];c.items.forEach((i,ii)=>{if(term&&!(i.n+' '+c.name).toLowerCase().includes(term))return;countRows++;let k=key(ci,ii),q=Number(quantities[k])||0,r=recipeData[recipeKey(c.name,i.n)];rows.push(`<div class="row"><div class="item-main"><span class="item-name">${esc(i.n)}</span><span class="item-tools"><button class="icon-btn ${favorites.has(k)?'active':''}" data-fav="${k}" title="Preferito">${favorites.has(k)?'★':'☆'}</button>${r?`<button class="icon-btn" data-recipe="${ci}:${ii}" title="Ricetta">▦</button>`:''}</span></div><div class="price">${money(i.p)}</div><div class="qty"><button data-minus="${k}">−</button><input data-qty="${k}" type="number" min="0" value="${q||''}" placeholder="0"><button data-plus="${k}">+</button></div><div class="row-total">${money(q*i.p)}</div></div>`)});if(!rows.length&&term)return;let sub=c.items.reduce((s,i,ii)=>s+(Number(quantities[key(ci,ii)])||0)*i.p,0);html+=`<section class="category ${(allCollapsed||(!c.open&&!term))?'collapsed':''}"><div class="category-head"><span class="category-icon">◈</span><h2 class="category-title">${esc(c.name)}</h2><span class="category-arrow">▼</span></div><div class="category-body"><div class="rows">${rows.join('')}</div><div class="category-subtotal"><span>Subtotale</span><strong>${money(sub)}</strong></div></div></section>`});
+box.innerHTML=countRows?html:'<div class="no-results">Nessun articolo trovato.</div>';
+box.querySelectorAll('.category-head').forEach(h=>h.onclick=()=>{h.parentElement.classList.toggle('collapsed');allCollapsed=false;$('#collapseBtn').textContent='Chiudi sezioni'});
+box.querySelectorAll('[data-fav]').forEach(b=>b.onclick=e=>{e.stopPropagation();toggleFav(b.dataset.fav)});
+box.querySelectorAll('[data-minus]').forEach(b=>b.onclick=()=>change(b.dataset.minus,-1));
+box.querySelectorAll('[data-plus]').forEach(b=>b.onclick=()=>change(b.dataset.plus,1));
+box.querySelectorAll('[data-qty]').forEach(inp=>inp.oninput=()=>{quantities[inp.dataset.qty]=Math.max(0,Math.floor(Number(inp.value)||0));save();renderSummary();let [ci,ii]=inp.dataset.qty.split(':').map(Number);inp.closest('.row').querySelector('.row-total').textContent=money((Number(inp.value)||0)*catalog.categories[ci].items[ii].p)});
+box.querySelectorAll('[data-recipe]').forEach(b=>b.onclick=()=>{let [ci,ii]=b.dataset.recipe.split(':').map(Number);openRecipe(ci,ii)});
+$('#miniStatus').textContent=`Armeria · ${catalog.itemCount} voci${active().length?' · '+active().reduce((s,x)=>s+x.qty,0)+' pz nell’ordine':''}`;quick();renderSummary()}
+function renderSummary(){let a=active(),box=$('#summary');box.innerHTML=a.length?a.map(x=>`<div class="summary-row"><div><div class="summary-name">${esc(x.name)}</div><div class="summary-meta">${esc(x.category)}</div></div><div class="summary-qty">×${x.qty} · ${money(x.value)}</div></div>`).join(''):'<div class="summary-empty">Nessun articolo inserito.</div>';let sub=a.reduce((s,x)=>s+x.value,0),dv=sub*discount/100,total=sub-dv;$('#subtotal').textContent=money(sub);$('#discountLabel').textContent='Sconto '+formatPct(discount);$('#discountValue').textContent='-'+money(dv);$('#total').textContent=$('#grandTotal').textContent=money(total)}
+function formatPct(v){let n=Number(v)||0;return (Number.isInteger(n)?n:String(n).replace('.',','))+'%'}
+function setDiscount(v,custom=false){discount=Math.max(0,Math.min(100,Number(v)||0));document.querySelectorAll('#discountButtons button').forEach(b=>b.classList.toggle('active',!custom&&Number(b.dataset.discount)===discount));if(!custom)$('#customDiscount').value='';safeSet(STORE.discount,discount);renderSummary()}
+function collapse(){allCollapsed=!allCollapsed;document.querySelectorAll('.category').forEach(s=>s.classList.toggle('collapsed',allCollapsed));$('#collapseBtn').textContent=allCollapsed?'Apri sezioni':'Chiudi sezioni'}
+
+const CRAFT_YIELDS={
+  'ACCESSORI REVOLVER||CALCIO':8,
+  'ACCESSORI REVOLVER||TACCA DI MIRA':5,
+  'ACCESSORI REVOLVER||CANNA':5,
+  'ACCESSORI REVOLVER||TELAIO':5,
+  'ACCESSORI REVOLVER||CANE':5,
+  'ACCESSORI REVOLVER||TAMBURO':5,
+  'ACCESSORI REVOLVER||GRILLETTO':5,
+  'ACCESSORI PISTOLA||TACCA DI MIRA':5,
+  'ACCESSORI PISTOLA||IMPUGNATURA':5,
+  'ACCESSORI PISTOLA||CANNA':5,
+  'ACCESSORI PISTOLA||TELAIO':5,
+  'ACCESSORI PISTOLA||PERCUSSORE':5,
+  'ACCESSORI PISTOLA||OTTURATORE':5,
+  'ACCESSORI PISTOLA||GRILLETTO':5,
+  'ACCESSORI REPEATER||TACCA DI MIRA':5,
+  'ACCESSORI REPEATER||CANNA':5,
+  'ACCESSORI REPEATER||TELAIO':5,
+  'ACCESSORI REPEATER||PERCUSSORE':5,
+  'ACCESSORI REPEATER||CALCIO':5,
+  'ACCESSORI REPEATER||OTTURATORE':5,
+  'ACCESSORI REPEATER||GRILLETTO':5,
+  'ACCESSORI REPEATER||OTTICA PER FUCILE 2X':5,
+  'ACCESSORI ARCO E COLTELLO||IMPUGNATURA COLTELLO':5,
+  'ACCESSORI ARCO E COLTELLO||LAMA COLTELLO':5,
+  'ACCESSORI ARCO E COLTELLO||IMPUGNATURA ARCO':5,
+  'ACCESSORI ARCO E COLTELLO||CORPO ARCO':5,
+  'ACCESSORI ARCO E COLTELLO||CORDA ARCO':5,
+  'MUNIZIONI||FRECCIA STANDARD':100,
+  'MUNIZIONI||MUNIZIONI REVOLVER':50,
+  'MUNIZIONI||MUNIZIONI REVOLVER ALTA VELOCITÀ':40,
+  'MUNIZIONI||MUNIZIONI REVOLVER EXPRESS':50,
+  'MUNIZIONI||MUNIZIONI PISTOLA STANDARD':50,
+  'MUNIZIONI||MUNIZIONI PISTOLA ALTA VELOCITÀ':40,
+  'MUNIZIONI||MUNIZIONI PISTOLA EXPRESS':50,
+  'MUNIZIONI||MUNIZIONI REPEATER':50,
+  'MUNIZIONI||MUNIZIONI REPEATER ALTA VELOCITÀ':40,
+  'MUNIZIONI||MUNIZIONI FUCILI':50,
+  'MUNIZIONI||MUNIZIONI FUCILI ALTA VELOCITÀ':40,
+  'MUNIZIONI||MUNIZIONI .22':50,
+  'ALTRO||POLVERE DA SPARO':50
+};
+let productionItems=[],productionIndex=0;
+
+function craftYield(category,name,recipe){
+  return Number(recipe?.yield)||Number(CRAFT_YIELDS[recipeKey(category,name)])||1;
+}
+function craftCountFor(item,recipe){
+  return Math.max(1,Math.ceil(Number(item.qty||0)/craftYield(item.category,item.name,recipe)));
+}
+function fmtCraftQty(value){
+  const n=Number(value)||0;
+  return Number.isInteger(n)?String(n):String(Number(n.toFixed(2)));
+}
+function parseMaterialPart(part){
+  const m=String(part||'').trim().match(/^([0-9]+(?:[.,][0-9]+)?)\s*x\s*(.+)$/i);
+  return m?{qty:Number(m[1].replace(',','.')),name:m[2].trim()}:null;
+}
+function scaledText(text,multiplier){
+  const p=parseMaterialPart(text);
+  return p?fmtCraftQty(p.qty*multiplier)+' x '+p.name:String(text||'');
+}
+function scaledSummary(summary,multiplier){
+  return String(summary||'').split(';').map(s=>scaledText(s,multiplier)).join('; ');
+}
+function normalizedMaterial(name){
+  const low=String(name||'').trim().toLowerCase().replace(/\s+/g,' ');
+  const aliases={
+    'assi di legno':'asse di legno',
+    'piombo':'piombo grezzo'
+  };
+  return aliases[low]||low;
+}
+function prettyMaterial(name){
+  return String(name||'').replace(/\b\w/g,c=>c.toUpperCase());
+}
+function totalOrderMaterials(items){
+  const totals=new Map();
+  items.forEach(item=>{
+    const recipe=recipeData[recipeKey(item.category,item.name)];
+    if(!recipe)return;
+    const crafts=craftCountFor(item,recipe);
+    String(recipe.summary||'').split(';').forEach(part=>{
+      const p=parseMaterialPart(part);
+      if(!p)return;
+      const k=normalizedMaterial(p.name);
+      totals.set(k,(totals.get(k)||0)+p.qty*crafts);
+    });
+  });
+  return [...totals.entries()].sort((a,b)=>a[0].localeCompare(b[0],'it'));
+}
+function openProduction(){
+  productionItems=active().filter(item=>recipeData[recipeKey(item.category,item.name)]);
+  productionIndex=0;
+  $('#productionModal').classList.add('open');
+  renderProduction();
+}
+function closeProduction(){
+  $('#productionModal').classList.remove('open');
+}
+function moveProduction(delta){
+  productionIndex=Math.max(0,Math.min(productionItems.length-1,productionIndex+delta));
+  renderProduction();
+}
+function renderProduction(){
+  const body=$('#productionBody');
+  if(!productionItems.length){
+    $('#productionSubtitle').textContent='Nessun articolo craftabile presente nell’ordine.';
+    body.innerHTML='<div class="production-empty">Aggiungi almeno un articolo con ricetta prima di preparare l’ordine.</div>';
+    return;
+  }
+
+  const totalPieces=productionItems.reduce((s,x)=>s+Number(x.qty||0),0);
+  $('#productionSubtitle').textContent=productionItems.length+' voci craftabili · '+totalPieces+' pezzi da preparare';
+
+  const item=productionItems[productionIndex];
+  const recipe=recipeData[recipeKey(item.category,item.name)];
+  const yieldQty=craftYield(item.category,item.name,recipe);
+  const crafts=craftCountFor(item,recipe);
+  const slots=(recipe.slots||[]).slice(0,9);
+  while(slots.length<9)slots.push('');
+
+  const grid=slots.map((slot,index)=>{
+    const shown=slot?scaledText(slot,crafts):'';
+    return `<div class="production-slot ${slot?'':'empty'}"><span class="production-slot-number">${index+1}</span>${slot?`<span class="production-slot-text">${esc(shown)}</span>`:'<span>·</span>'}</div>`;
+  }).join('');
+
+  const totals=totalOrderMaterials(productionItems);
+  const materials=totals.length
+    ? totals.map(([name,qty])=>`<span>${esc(prettyMaterial(name))}</span><span class="mat-qty">×${fmtCraftQty(qty)}</span>`).join('')
+    : '<span>Nessun materiale calcolabile.</span><span></span>';
+
+  const batchNote=yieldQty>1
+    ? `Resa per craft ×${yieldQty} · craft necessari ×${crafts}`
+    : `Craft necessari ×${crafts}`;
+
+  body.innerHTML=`
+    <div class="production-layout">
+      <section class="production-main">
+        <div class="production-nav">
+          <button class="btn" type="button" onclick="moveProduction(-1)" ${productionIndex===0?'disabled':''}>← Precedente</button>
+          <span class="production-step">${productionIndex+1} / ${productionItems.length}</span>
+          <button class="btn" type="button" onclick="moveProduction(1)" ${productionIndex===productionItems.length-1?'disabled':''}>Successivo →</button>
+        </div>
+        <h3 class="prod-title">${esc(item.name)}</h3>
+        <div class="prod-meta">
+          <span>${esc(item.category)}</span>
+          <strong>Quantità ordine ×${item.qty}</strong>
+          <span class="prod-badge">${batchNote}</span>
+        </div>
+        <div class="production-summary">
+          <span class="production-summary-label">Ingredienti complessivi per questa quantità</span>
+          <div class="production-summary-text">${esc(scaledSummary(recipe.summary,crafts))}</div>
+        </div>
+        <div class="production-grid-label">
+          <strong>Schema 3 × 3 complessivo</strong>
+          <span>Ogni casella mostra ciò che serve per tutti i craft necessari.</span>
+        </div>
+        <div class="production-grid">${grid}</div>
+      </section>
+      <aside class="materials-panel">
+        <h3 class="materials-title">Totale materiali ordine</h3>
+        <p class="materials-note">Somma di tutti i materiali necessari per le voci craftabili presenti nell’ordine.</p>
+        <div class="materials-list">${materials}</div>
+      </aside>
+    </div>`;
+}
+
+function clearOrder(){if(active().length&&!confirm('Svuotare l’ordine corrente?'))return;quantities={};discount=0;$('#customDiscount').value='';save();render()}
+function openRecipe(ci,ii){let c=catalog.categories[ci],i=c?.items[ii],r=i&&recipeData[recipeKey(c.name,i.n)];if(!r)return;$('#recipeCategory').textContent=c.name;$('#recipeTitle').textContent=i.n;$('#recipeSummary').textContent=r.summary||'Ricetta';let s=(r.slots||[]).slice(0,9);while(s.length<9)s.push('');$('#craftGrid').innerHTML=s.map(x=>`<div class="slot ${x?'':'empty'}">${esc(x)}</div>`).join('');$('#recipeModal').classList.add('open')}
+function closeRecipe(){$('#recipeModal').classList.remove('open')}
+quantities=safeGet(STORE.qty,{})||{};favorites=new Set(safeGet(STORE.favorites,[])||[]);discount=Math.max(0,Math.min(100,Number(safeGet(STORE.discount,0))||0));
+$('#search').oninput=render;$('#collapseBtn').onclick=collapse;$('#prepareOrderBtn').onclick=openProduction;$('#clearCheckoutBtn').onclick=clearOrder;$('#discountButtons').onclick=e=>{let b=e.target.closest('[data-discount]');if(b)setDiscount(b.dataset.discount)};$('#customDiscount').oninput=e=>setDiscount(e.target.value,true);$('#recipeClose').onclick=closeRecipe;$('#recipeModal').onclick=e=>{if(e.target===e.currentTarget)closeRecipe()};$('#productionClose').onclick=closeProduction;$('#productionModal').onclick=e=>{if(e.target===e.currentTarget)closeProduction()};document.onkeydown=e=>{if(e.key==='Escape'){closeRecipe();closeProduction()}};
+if([0,5,10,15,20].includes(discount))document.querySelectorAll('#discountButtons button').forEach(b=>b.classList.toggle('active',Number(b.dataset.discount)===discount));else $('#customDiscount').value=discount||'';
+render();
+</script>
+</body>
+</html>
