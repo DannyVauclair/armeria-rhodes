@@ -23,21 +23,34 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .site-nav a{display:flex;align-items:center;justify-content:center;min-height:42px;border:1px solid var(--line);background:linear-gradient(180deg,#342719,#21180f);color:var(--ink);text-decoration:none;font:700 11px Arial,Helvetica,sans-serif;letter-spacing:.45px;text-transform:uppercase}
 .site-nav a:hover{border-color:var(--brass);color:var(--brass2)}
 .site-nav a.active{border-color:var(--brass);background:linear-gradient(180deg,var(--brick),var(--brick2));color:#f0dfbd}
-.intro{margin:0 0 12px;padding:10px 12px;border-left:3px solid var(--brass);background:rgba(219,196,154,.055);color:var(--muted);font-size:11px;line-height:1.5}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.card{border:1px solid var(--soft);border-top:2px solid var(--brick);background:linear-gradient(180deg,rgba(53,41,28,.98),rgba(31,24,17,.98));box-shadow:0 7px 20px rgba(0,0,0,.16);overflow:hidden}
-.card-head{display:flex;align-items:center;gap:9px;min-height:50px;padding:11px 13px;border-bottom:1px solid var(--soft);background:linear-gradient(90deg,rgba(151,112,66,.16),transparent 72%)}
-.symbol{width:20px;text-align:center;color:var(--brass);font-size:14px}
-.material{margin:0;color:#ead5af;font-size:13px;font-weight:700;letter-spacing:.2px;text-transform:uppercase}
-.suppliers{padding:5px 13px 12px}
-.supplier{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;padding:11px 0;border-bottom:1px dashed var(--soft)}
+.intro{margin:0 0 10px;padding:8px 10px;border-left:3px solid var(--brass);background:rgba(219,196,154,.055);color:var(--muted);font-size:10px;line-height:1.4}
+.suppliers-head{display:grid;grid-template-columns:minmax(220px,.75fr) minmax(210px,1.1fr) minmax(120px,.65fr) minmax(220px,1.25fr);gap:10px;padding:7px 11px;border:1px solid var(--soft);border-bottom:0;background:rgba(0,0,0,.16);color:var(--muted);font-size:8.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+@media(max-width:900px){.suppliers-head{display:none}}
+.grid{display:block;border:1px solid var(--soft);background:linear-gradient(180deg,rgba(53,41,28,.98),rgba(31,24,17,.98));box-shadow:0 7px 20px rgba(0,0,0,.16)}
+.card{display:grid;grid-template-columns:minmax(220px,.75fr) minmax(0,1.75fr);border-bottom:1px solid var(--soft);background:transparent}
+.card:last-child{border-bottom:0}
+.card-head{display:flex;align-items:center;gap:8px;min-height:100%;padding:9px 11px;border-right:1px solid var(--soft);background:linear-gradient(90deg,rgba(151,112,66,.15),rgba(151,112,66,.04))}
+.symbol{width:18px;text-align:center;color:var(--brass);font-size:12px;flex:0 0 auto}
+.material{margin:0;color:#ead5af;font-size:11.5px;font-weight:700;letter-spacing:.15px;text-transform:uppercase;line-height:1.3}
+.suppliers{padding:0}
+.supplier{display:grid;grid-template-columns:minmax(210px,1.1fr) minmax(120px,.65fr) minmax(220px,1.25fr);gap:10px;align-items:center;padding:7px 10px;border-bottom:1px dashed var(--soft)}
 .supplier:last-child{border-bottom:0}
-.name{font-size:12px;font-weight:700;color:var(--ink);line-height:1.35}
-.location{margin-top:3px;color:var(--muted);font-size:10px}
-.note{max-width:250px;padding:5px 7px;border:1px solid rgba(198,162,103,.24);background:rgba(0,0,0,.12);color:#cfb486;font-size:9.5px;line-height:1.4;text-align:right}
-.note:empty{display:none}
-.footer-note{margin-top:14px;padding:9px 11px;border:1px solid var(--soft);background:rgba(0,0,0,.11);color:#8f7c61;font-size:9.5px;text-align:center}
-@media(max-width:780px){.grid{grid-template-columns:1fr}.supplier{grid-template-columns:1fr}.note{max-width:none;text-align:left}.shell{width:calc(100% - 18px)}}
+.name{font-size:11px;font-weight:700;color:var(--ink);line-height:1.25}
+.location{margin:0;color:var(--muted);font-size:9.5px;line-height:1.25}
+.note{max-width:none;padding:0;border:0;background:none;color:#cfb486;font-size:9.5px;line-height:1.3;text-align:left}
+.note:empty::after{content:"—";color:#76664f}
+.footer-note{margin-top:12px;padding:7px 9px;border:1px solid var(--soft);background:rgba(0,0,0,.11);color:#8f7c61;font-size:9px;text-align:center}
+@media(max-width:900px){
+  .card{grid-template-columns:1fr}
+  .card-head{border-right:0;border-bottom:1px solid var(--soft);padding:8px 10px}
+  .supplier{grid-template-columns:minmax(160px,1fr) minmax(110px,.7fr) minmax(160px,1.2fr)}
+}
+@media(max-width:650px){
+  .supplier{grid-template-columns:1fr;gap:3px;padding:8px 10px}
+  .location{margin-top:1px}
+  .note{margin-top:2px}
+  .shell{width:calc(100% - 18px)}
+}
 </style>
 </head>
 <body>
@@ -46,58 +59,59 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 <nav class="site-nav" aria-label="Navigazione"><a href="./">Listino</a><a class="active" href="fornitori.html">Fornitori</a></nav>
 <div class="intro">Riferimenti utili per il rifornimento dell'armeria. Le note indicano vantaggi, modalità di consegna o condizioni particolari.</div>
 
+<div class="suppliers-head"><span>Materiale</span><span>Fornitore</span><span>Località</span><span>Note</span></div>
 <main class="grid">
   <section class="card">
     <div class="card-head"><span class="symbol">◈</span><h2 class="material">Lingotti di Rame e Acciaio</h2></div>
     <div class="suppliers">
-      <div class="supplier"><div><div class="name">Fabbro di Rhodes</div><div class="location">Rhodes</div></div><div class="note">Sconti se si portano i materiali.</div></div>
+      <div class="supplier"><div class="name">Fabbro di Rhodes</div><div class="location">Rhodes</div><div class="note">Sconti se si portano i materiali.</div></div>
     </div>
   </section>
 
   <section class="card">
     <div class="card-head"><span class="symbol">◈</span><h2 class="material">Lingotti di Ferro</h2></div>
     <div class="suppliers">
-      <div class="supplier"><div><div class="name">Fabbro di Blackwater</div><div class="location">Blackwater</div></div><div class="note">Più rapido; su pagamento effettua la consegna con treno.</div></div>
+      <div class="supplier"><div class="name">Fabbro di Blackwater</div><div class="location">Blackwater</div><div class="note">Più rapido; su pagamento effettua la consegna con treno.</div></div>
     </div>
   </section>
 
   <section class="card">
     <div class="card-head"><span class="symbol">◈</span><h2 class="material">Assi di Legno e Assi di Legno Pregiato</h2></div>
     <div class="suppliers">
-      <div class="supplier"><div><div class="name">Falegnameria di Saint Denis</div><div class="location">Saint Denis</div></div><div class="note"></div></div>
-      <div class="supplier"><div><div class="name">Falegnameria di Rhodes</div><div class="location">Rhodes</div></div><div class="note"></div></div>
+      <div class="supplier"><div class="name">Falegnameria di Saint Denis</div><div class="location">Saint Denis</div><div class="note"></div></div>
+      <div class="supplier"><div class="name">Falegnameria di Rhodes</div><div class="location">Rhodes</div><div class="note"></div></div>
     </div>
   </section>
 
   <section class="card">
     <div class="card-head"><span class="symbol">◈</span><h2 class="material">Legno e Legno Pregiato</h2></div>
     <div class="suppliers">
-      <div class="supplier"><div><div class="name">Segheria</div><div class="location">Saint Denis</div></div><div class="note"></div></div>
-      <div class="supplier"><div><div class="name">Banco dei Pegni di Blackwater</div><div class="location">Blackwater</div></div><div class="note"></div></div>
-      <div class="supplier"><div><div class="name">Banco dei Pegni di Saint Denis</div><div class="location">Saint Denis</div></div><div class="note"></div></div>
+      <div class="supplier"><div class="name">Segheria</div><div class="location">Saint Denis</div><div class="note"></div></div>
+      <div class="supplier"><div class="name">Banco dei Pegni di Blackwater</div><div class="location">Blackwater</div><div class="note"></div></div>
+      <div class="supplier"><div class="name">Banco dei Pegni di Saint Denis</div><div class="location">Saint Denis</div><div class="note"></div></div>
     </div>
   </section>
 
   <section class="card">
     <div class="card-head"><span class="symbol">◈</span><h2 class="material">Carbone</h2></div>
     <div class="suppliers">
-      <div class="supplier"><div><div class="name">Carboneria di Annesburg</div><div class="location">Annesburg</div></div><div class="note"></div></div>
+      <div class="supplier"><div class="name">Carboneria di Annesburg</div><div class="location">Annesburg</div><div class="note"></div></div>
     </div>
   </section>
 
   <section class="card">
     <div class="card-head"><span class="symbol">◈</span><h2 class="material">Materiali Grezzi</h2></div>
     <div class="suppliers">
-      <div class="supplier"><div><div class="name">Emporio Torres</div><div class="location">—</div></div><div class="note"></div></div>
-      <div class="supplier"><div><div class="name">Alexander</div><div class="location">Saloon Rhodes</div></div><div class="note"></div></div>
-      <div class="supplier"><div><div class="name">Sparrow Company</div><div class="location">Saint Denis</div></div><div class="note"></div></div>
+      <div class="supplier"><div class="name">Emporio Torres</div><div class="location">—</div><div class="note"></div></div>
+      <div class="supplier"><div class="name">Alexander</div><div class="location">Saloon Rhodes</div><div class="note"></div></div>
+      <div class="supplier"><div class="name">Sparrow Company</div><div class="location">Saint Denis</div><div class="note"></div></div>
     </div>
   </section>
 
   <section class="card">
     <div class="card-head"><span class="symbol">◈</span><h2 class="material">Componenti Armi</h2></div>
     <div class="suppliers">
-      <div class="supplier"><div><div class="name">Fonderia Ford</div><div class="location">Saint Denis</div></div><div class="note"></div></div>
+      <div class="supplier"><div class="name">Fonderia Ford</div><div class="location">Saint Denis</div><div class="note"></div></div>
     </div>
   </section>
 </main>
