@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2a1510">
+<title>Armeria di Rhodes · Fornitori</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Rye&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#17110b;--panel:#2b2117;--panel2:#201811;--ink:#ead9b7;--muted:#b9a27c;--brick:#876744;--brick2:#5e472f;--brass:#c6a267;--brass2:#e0c188;--line:rgba(198,162,103,.38);--soft:rgba(234,217,183,.10)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:radial-gradient(900px 480px at 8% -8%,rgba(184,145,92,.22),transparent 64%),radial-gradient(850px 520px at 100% 10%,rgba(137,103,66,.20),transparent 66%),linear-gradient(180deg,#2d2116,#1d150f 72%)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background:repeating-linear-gradient(0deg,transparent 0 7px,rgba(255,255,255,.02) 7px 8px)}
+.shell{width:min(1220px,calc(100% - 28px));margin:auto;padding:18px 0 48px}
+.signboard{position:relative;min-height:144px;display:grid;place-items:center;text-align:center;padding:28px 30px;border:1px solid var(--line);border-top:3px double var(--brass);border-bottom:3px double var(--brass);background:linear-gradient(90deg,rgba(0,0,0,.16),transparent 28% 72%,rgba(0,0,0,.16)),linear-gradient(180deg,rgba(114,85,53,.56),rgba(54,40,27,.78));box-shadow:0 18px 46px rgba(0,0,0,.42),inset 0 0 70px rgba(0,0,0,.35)}
+.signboard .eyebrow{font-family:'Libre Baskerville',Georgia,serif;color:#c5aa7d;font-size:10px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase}
+.signboard h1{margin:5px 0 0;color:#ead4a3;font:400 clamp(38px,5vw,66px)/1 'Rye',serif;text-shadow:0 3px 12px #000}
+.signboard .subtitle{margin-top:11px;color:#cbb184;font:400 11px 'Special Elite',monospace;letter-spacing:1.1px;text-transform:uppercase}
+.site-nav{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 10px}
+.site-nav a{display:flex;align-items:center;justify-content:center;min-height:42px;border:1px solid var(--line);background:linear-gradient(180deg,#342719,#21180f);color:var(--ink);text-decoration:none;font:700 11px Arial,Helvetica,sans-serif;letter-spacing:.45px;text-transform:uppercase}
+.site-nav a:hover{border-color:var(--brass);color:var(--brass2)}
+.site-nav a.active{border-color:var(--brass);background:linear-gradient(180deg,var(--brick),var(--brick2));color:#f0dfbd}
+.intro{margin:0 0 12px;padding:10px 12px;border-left:3px solid var(--brass);background:rgba(219,196,154,.055);color:var(--muted);font-size:11px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card{border:1px solid var(--soft);border-top:2px solid var(--brick);background:linear-gradient(180deg,rgba(53,41,28,.98),rgba(31,24,17,.98));box-shadow:0 7px 20px rgba(0,0,0,.16);overflow:hidden}
+.card-head{display:flex;align-items:center;gap:9px;min-height:50px;padding:11px 13px;border-bottom:1px solid var(--soft);background:linear-gradient(90deg,rgba(151,112,66,.16),transparent 72%)}
+.symbol{width:20px;text-align:center;color:var(--brass);font-size:14px}
+.material{margin:0;color:#ead5af;font-size:13px;font-weight:700;letter-spacing:.2px;text-transform:uppercase}
+.suppliers{padding:5px 13px 12px}
+.supplier{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;padding:11px 0;border-bottom:1px dashed var(--soft)}
+.supplier:last-child{border-bottom:0}
+.name{font-size:12px;font-weight:700;color:var(--ink);line-height:1.35}
+.location{margin-top:3px;color:var(--muted);font-size:10px}
+.note{max-width:250px;padding:5px 7px;border:1px solid rgba(198,162,103,.24);background:rgba(0,0,0,.12);color:#cfb486;font-size:9.5px;line-height:1.4;text-align:right}
+.note:empty{display:none}
+.footer-note{margin-top:14px;padding:9px 11px;border:1px solid var(--soft);background:rgba(0,0,0,.11);color:#8f7c61;font-size:9.5px;text-align:center}
+@media(max-width:780px){.grid{grid-template-columns:1fr}.supplier{grid-template-columns:1fr}.note{max-width:none;text-align:left}.shell{width:calc(100% - 18px)}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="signboard"><div><div class="eyebrow">Rhodes · Lemoyne</div><h1>Armeria di Rhodes</h1><div class="subtitle">Armi · Munizioni · Componenti</div></div></header>
+<nav class="site-nav" aria-label="Navigazione"><a href="./">Listino</a><a class="active" href="fornitori.html">Fornitori</a></nav>
+<div class="intro">Riferimenti utili per il rifornimento dell'armeria. Le note indicano vantaggi, modalità di consegna o condizioni particolari.</div>
+
+<main class="grid">
+  <section class="card">
+    <div class="card-head"><span class="symbol">◈</span><h2 class="material">Lingotti di Rame e Acciaio</h2></div>
+    <div class="suppliers">
+      <div class="supplier"><div><div class="name">Fabbro di Rhodes</div><div class="location">Rhodes</div></div><div class="note">Sconti se si portano i materiali.</div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="symbol">◈</span><h2 class="material">Lingotti di Ferro</h2></div>
+    <div class="suppliers">
+      <div class="supplier"><div><div class="name">Fabbro di Blackwater</div><div class="location">Blackwater</div></div><div class="note">Più rapido; su pagamento effettua la consegna con treno.</div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="symbol">◈</span><h2 class="material">Assi di Legno e Assi di Legno Pregiato</h2></div>
+    <div class="suppliers">
+      <div class="supplier"><div><div class="name">Falegnameria di Saint Denis</div><div class="location">Saint Denis</div></div><div class="note"></div></div>
+      <div class="supplier"><div><div class="name">Falegnameria di Rhodes</div><div class="location">Rhodes</div></div><div class="note"></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="symbol">◈</span><h2 class="material">Legno e Legno Pregiato</h2></div>
+    <div class="suppliers">
+      <div class="supplier"><div><div class="name">Segheria</div><div class="location">Saint Denis</div></div><div class="note"></div></div>
+      <div class="supplier"><div><div class="name">Banco dei Pegni di Blackwater</div><div class="location">Blackwater</div></div><div class="note"></div></div>
+      <div class="supplier"><div><div class="name">Banco dei Pegni di Saint Denis</div><div class="location">Saint Denis</div></div><div class="note"></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="symbol">◈</span><h2 class="material">Carbone</h2></div>
+    <div class="suppliers">
+      <div class="supplier"><div><div class="name">Carboneria di Annesburg</div><div class="location">Annesburg</div></div><div class="note"></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="symbol">◈</span><h2 class="material">Materiali Grezzi</h2></div>
+    <div class="suppliers">
+      <div class="supplier"><div><div class="name">Emporio Torres</div><div class="location">—</div></div><div class="note"></div></div>
+      <div class="supplier"><div><div class="name">Alexander</div><div class="location">Saloon Rhodes</div></div><div class="note"></div></div>
+      <div class="supplier"><div><div class="name">Sparrow Company</div><div class="location">Saint Denis</div></div><div class="note"></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span class="symbol">◈</span><h2 class="material">Componenti Armi</h2></div>
+    <div class="suppliers">
+      <div class="supplier"><div><div class="name">Fonderia Ford</div><div class="location">Saint Denis</div></div><div class="note"></div></div>
+    </div>
+  </section>
+</main>
+
+<div class="footer-note">Armeria di Rhodes · Registro fornitori</div>
+</div>
+</body>
+</html>
